@@ -1,6 +1,6 @@
 [package]
 name = "numerated"
-version = "2.0.0"
+version = "2.0.1"
 edition = "2024"
 rust-version = "1.88"
 
@@ -15,11 +15,11 @@ keywords = ["gear", "interval", "tree", "ranges", "no-std"]
 categories = ["mathematics", "no-std"]
 
 [dependencies]
-derive_more = { version = "2", features = ["display", "from"] }
-log = { version = "0.4", optional = true }
-num-traits = "0.2"
-proptest = { version = "1", optional = true }
-scale-info = { version = "2", features = ["derive"] }
+derive_more = { version = "2", features = ["display", "from"], default-features = false }
+log = { version = "0.4", default-features = false, optional = true }
+num-traits = { version = "0.2", default-features = false }
+proptest = { version = "1", default-features = false, optional = true }
+scale-info = { version = "2", features = ["derive"], default-features = false }
 
 [dev-dependencies]
 log = "0.4"
@@ -27,4 +27,8 @@ proptest = "1"
 
 [features]
 default = []
-mock = ["log", "proptest"]
+mock = [
+    "dep:log",
+    "proptest/alloc",
+    "proptest/no_std",
+]

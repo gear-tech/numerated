@@ -1,28 +1,30 @@
 [package]
 name = "numerated"
+version = "2.0.0"
+edition = "2024"
+rust-version = "1.88"
+
+authors = ["Gear Technologies"]
 description = "A library for working with intervals and sets of numerated values"
 documentation = "https://docs.rs/numerated"
-keywords = ["gear", "tree", "interval", "numerated", "no-std"]
+repository = "https://github.com/gear-tech/numerated"
+homepage = "https://gear-tech.io"
+license = "GPL-3.0-or-later WITH Classpath-exception-2.0"
+
+keywords = ["gear", "interval", "tree", "ranges", "no-std"]
 categories = ["mathematics", "no-std"]
-version.workspace = true
-authors.workspace = true
-edition.workspace = true
-license.workspace = true
-homepage.workspace = true
-repository.workspace = true
-rust-version.workspace = true
 
 [dependencies]
-num-traits.workspace = true
-derive_more.workspace = true
-scale-info = { workspace = true, features = ["derive"] }
-log = { workspace = true, optional = true }
-proptest = { workspace = true, optional = true }
-gear-workspace-hack.workspace = true
+derive_more = { version = "2", features = ["display", "from"] }
+log = { version = "0.4", optional = true }
+num-traits = "0.2"
+proptest = { version = "1", optional = true }
+scale-info = { version = "2", features = ["derive"] }
 
 [dev-dependencies]
-proptest.workspace = true
-log.workspace = true
+log = "0.4"
+proptest = "1"
 
 [features]
+default = []
 mock = ["log", "proptest"]
